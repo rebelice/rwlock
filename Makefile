@@ -25,4 +25,4 @@ clean:
 	rm $(TAR) checker $(LOG)
 
 help:
-	@cat README.md
+	@cat README
