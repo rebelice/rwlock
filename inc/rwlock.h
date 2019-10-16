@@ -1,9 +1,15 @@
 #ifndef __RWLOCK_H__
 #define __RWLOCK_H__
 
-typedef unsigned rwlock_t;
+#include <pthread.h>
 
-#define RWLOCK_INITIALIZER 0
+typedef struct rwlock_t rwlock_t;
+
+struct rwlock_t{
+	unsigned l;
+	pthread_mutex_t mutex;
+	pthread_cond_t cond;
+};
 
 #define RW_WAIT_BIT 	0
 #define RW_WRITE_BIT	1
@@ -13,6 +19,7 @@ typedef unsigned rwlock_t;
 #define RW_WRITE		2
 #define RW_READ			4
 
+void rw_lock_init(rwlock_t *);
 void rw_read_lock(rwlock_t *);
 void rw_read_unlock(rwlock_t *);
 void rw_write_lock(rwlock_t *);

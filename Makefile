@@ -24,5 +24,9 @@ run: $(TAR)
 clean:
 	rm $(TAR) checker $(LOG)
 
+run_check: checker $(TAR)
+	./$(TAR) $(READER) $(WRITER) > $(LOG)
+	./checker
+
 help:
 	@cat README

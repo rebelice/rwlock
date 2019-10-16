@@ -76,7 +76,7 @@ main(int argc, char *argv[])
 {
 	init(argc, argv);
 	int x;
-	lock = RWLOCK_INITIALIZER;
+	rw_lock_init(&lock);
 	pthread_t rthread_pool[READER_NUM], wthread_pool[WRITER_NUM];
 	int rid[READER_NUM], wid[WRITER_NUM];
 
