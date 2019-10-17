@@ -56,6 +56,7 @@ rw_write_unlock(rwlock_t *l)
 {
 	pthread_mutex_lock(&(l->mutex));
 	l->write = 0;
+	l->wait = 0;
 	pthread_cond_broadcast(&(l->cond));
 	pthread_mutex_unlock(&(l->mutex));
 }
