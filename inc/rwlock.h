@@ -6,7 +6,7 @@
 typedef struct rwlock_t rwlock_t;
 
 struct rwlock_t{
-	unsigned l;
+	unsigned read, write, wait;
 	pthread_mutex_t mutex;
 	pthread_cond_t cond;
 };
